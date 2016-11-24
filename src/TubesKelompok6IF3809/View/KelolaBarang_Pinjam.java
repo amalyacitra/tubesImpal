@@ -47,8 +47,12 @@ public class KelolaBarang_Pinjam extends javax.swing.JFrame implements View {
         btn_pinjam = new javax.swing.JButton();
         btn_kembali = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        tf_tanggalpinjam = new javax.swing.JTextField();
-        tf_pengembalian = new javax.swing.JTextField();
+        cb_tanggalpinjam = new javax.swing.JComboBox<>();
+        cb_bulanpinjam = new javax.swing.JComboBox<>();
+        cb_tahunpinjam = new javax.swing.JComboBox<>();
+        cb_tanggalpengembalian = new javax.swing.JComboBox<>();
+        cb_bulanpengembalian = new javax.swing.JComboBox<>();
+        cb_tahunpengembalian = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,6 +92,18 @@ public class KelolaBarang_Pinjam extends javax.swing.JFrame implements View {
         jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel5.setText("Tanggal Pengembalian");
 
+        cb_tanggalpinjam.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        cb_bulanpinjam.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        cb_tahunpinjam.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        cb_tanggalpengembalian.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        cb_bulanpengembalian.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        cb_tahunpengembalian.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -102,7 +118,6 @@ public class KelolaBarang_Pinjam extends javax.swing.JFrame implements View {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jScrollPane1)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel2)
                                         .addGap(18, 18, 18)
@@ -117,8 +132,23 @@ public class KelolaBarang_Pinjam extends javax.swing.JFrame implements View {
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(tf_namapeminjam)
-                                            .addComponent(tf_tanggalpinjam)
-                                            .addComponent(tf_pengembalian))))))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                                        .addComponent(cb_tanggalpengembalian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(34, 34, 34)
+                                                        .addComponent(cb_bulanpengembalian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                                        .addComponent(cb_tanggalpinjam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(34, 34, 34)
+                                                        .addComponent(cb_bulanpinjam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(cb_tahunpinjam, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(cb_tahunpengembalian, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jScrollPane1)
+                                        .addGap(62, 62, 62)))))
                         .addGap(0, 16, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
@@ -130,7 +160,7 @@ public class KelolaBarang_Pinjam extends javax.swing.JFrame implements View {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -144,17 +174,26 @@ public class KelolaBarang_Pinjam extends javax.swing.JFrame implements View {
                     .addComponent(jLabel3)
                     .addComponent(tf_namapeminjam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(tf_tanggalpinjam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(tf_pengembalian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_pinjam)
-                    .addComponent(btn_kembali))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(cb_tanggalpengembalian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cb_bulanpengembalian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_pinjam)
+                            .addComponent(btn_kembali)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cb_tanggalpinjam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cb_bulanpinjam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cb_tahunpinjam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cb_tahunpengembalian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -180,6 +219,12 @@ public class KelolaBarang_Pinjam extends javax.swing.JFrame implements View {
     private javax.swing.JButton btn_cari;
     private javax.swing.JButton btn_kembali;
     private javax.swing.JButton btn_pinjam;
+    private javax.swing.JComboBox<String> cb_bulanpengembalian;
+    private javax.swing.JComboBox<String> cb_bulanpinjam;
+    private javax.swing.JComboBox<String> cb_tahunpengembalian;
+    private javax.swing.JComboBox<String> cb_tahunpinjam;
+    private javax.swing.JComboBox<String> cb_tanggalpengembalian;
+    private javax.swing.JComboBox<String> cb_tanggalpinjam;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -190,8 +235,6 @@ public class KelolaBarang_Pinjam extends javax.swing.JFrame implements View {
     private javax.swing.JList<String> list_barang;
     private javax.swing.JTextField tf_cari;
     private javax.swing.JTextField tf_namapeminjam;
-    private javax.swing.JTextField tf_pengembalian;
-    private javax.swing.JTextField tf_tanggalpinjam;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -254,21 +297,56 @@ public class KelolaBarang_Pinjam extends javax.swing.JFrame implements View {
         this.tf_namapeminjam = tf_namapeminjam;
     }
 
-    public JTextField getTf_pengembalian() {
-        return tf_pengembalian;
+    public JComboBox<String> getCb_bulanpengembalian() {
+        return cb_bulanpengembalian;
     }
 
-    public void setTf_pengembalian(JTextField tf_pengembalian) {
-        this.tf_pengembalian = tf_pengembalian;
+    public void setCb_bulanpengembalian(JComboBox<String> cb_bulanpengembalian) {
+        this.cb_bulanpengembalian = cb_bulanpengembalian;
     }
 
-    public JTextField getTf_tanggalpinjam() {
-        return tf_tanggalpinjam;
+    public JComboBox<String> getCb_bulanpinjam() {
+        return cb_bulanpinjam;
     }
 
-    public void setTf_tanggalpinjam(JTextField tf_tanggalpinjam) {
-        this.tf_tanggalpinjam = tf_tanggalpinjam;
+    public void setCb_bulanpinjam(JComboBox<String> cb_bulanpinjam) {
+        this.cb_bulanpinjam = cb_bulanpinjam;
     }
+
+    public JComboBox<String> getCb_tahunpengembalian() {
+        return cb_tahunpengembalian;
+    }
+
+    public void setCb_tahunpengembalian(JComboBox<String> cb_tahunpengembalian) {
+        this.cb_tahunpengembalian = cb_tahunpengembalian;
+    }
+
+    public JComboBox<String> getCb_tahunpinjam() {
+        return cb_tahunpinjam;
+    }
+
+    public void setCb_tahunpinjam(JComboBox<String> cb_tahunpinjam) {
+        this.cb_tahunpinjam = cb_tahunpinjam;
+    }
+
+    public JComboBox<String> getCb_tanggalpengembalian() {
+        return cb_tanggalpengembalian;
+    }
+
+    public void setCb_tanggalpengembalian(JComboBox<String> cb_tanggalpengembalian) {
+        this.cb_tanggalpengembalian = cb_tanggalpengembalian;
+    }
+
+    public JComboBox<String> getCb_tanggalpinjam() {
+        return cb_tanggalpinjam;
+    }
+
+    public void setCb_tanggalpinjam(JComboBox<String> cb_tanggalpinjam) {
+        this.cb_tanggalpinjam = cb_tanggalpinjam;
+    }
+    
+    
+
     
     
     

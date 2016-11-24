@@ -64,12 +64,12 @@
                           </Group>
                           <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="tf_jenis" alignment="0" max="32767" attributes="0"/>
+                              <Component id="tf_jenis" alignment="0" pref="250" max="32767" attributes="0"/>
                               <Component id="tf_namagedung" alignment="0" max="32767" attributes="0"/>
                               <Component id="tf_nomor" alignment="0" max="32767" attributes="0"/>
                               <Component id="tf_nama" alignment="0" max="32767" attributes="0"/>
-                              <Component id="tf_prodi" max="32767" attributes="0"/>
-                              <Component id="tf_fakultas" pref="250" max="32767" attributes="0"/>
+                              <Component id="cb_prodi" max="32767" attributes="0"/>
+                              <Component id="cb_tahun" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
@@ -117,12 +117,12 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="tf_prodi" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cb_prodi" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="tf_fakultas" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cb_tahun" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="35" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -221,9 +221,35 @@
         </Component>
         <Component class="javax.swing.JTextField" name="tf_jenis">
         </Component>
-        <Component class="javax.swing.JTextField" name="tf_prodi">
+        <Component class="javax.swing.JComboBox" name="cb_prodi">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="4">
+                <StringItem index="0" value="Item 1"/>
+                <StringItem index="1" value="Item 2"/>
+                <StringItem index="2" value="Item 3"/>
+                <StringItem index="3" value="Item 4"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
-        <Component class="javax.swing.JTextField" name="tf_fakultas">
+        <Component class="javax.swing.JComboBox" name="cb_tahun">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="4">
+                <StringItem index="0" value="Item 1"/>
+                <StringItem index="1" value="Item 2"/>
+                <StringItem index="2" value="Item 3"/>
+                <StringItem index="3" value="Item 4"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

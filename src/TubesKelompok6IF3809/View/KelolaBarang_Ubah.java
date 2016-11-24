@@ -49,10 +49,10 @@ public class KelolaBarang_Ubah extends javax.swing.JFrame implements View{
         cb_tahun = new javax.swing.JComboBox<>();
         tf_kondisi = new javax.swing.JTextField();
         tf_harga = new javax.swing.JTextField();
-        tf_prodi = new javax.swing.JTextField();
-        tf_fakultas = new javax.swing.JTextField();
         btn_kembali = new javax.swing.JButton();
         btn_simpan = new javax.swing.JButton();
+        cb_prodi = new javax.swing.JComboBox<>();
+        cb_fakultas = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -99,6 +99,10 @@ public class KelolaBarang_Ubah extends javax.swing.JFrame implements View{
         btn_simpan.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         btn_simpan.setText("Simpan");
 
+        cb_prodi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        cb_fakultas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -126,8 +130,8 @@ public class KelolaBarang_Ubah extends javax.swing.JFrame implements View{
                     .addComponent(tf_nama)
                     .addComponent(tf_kondisi)
                     .addComponent(tf_harga)
-                    .addComponent(tf_prodi)
-                    .addComponent(tf_fakultas))
+                    .addComponent(cb_prodi, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cb_fakultas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(62, 62, 62))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
@@ -166,12 +170,12 @@ public class KelolaBarang_Ubah extends javax.swing.JFrame implements View{
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(tf_prodi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cb_prodi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(tf_fakultas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                    .addComponent(cb_fakultas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_kembali)
                     .addComponent(btn_simpan))
@@ -198,6 +202,8 @@ public class KelolaBarang_Ubah extends javax.swing.JFrame implements View{
     private javax.swing.JButton btn_kembali;
     private javax.swing.JButton btn_simpan;
     private javax.swing.JComboBox<String> cb_bulan;
+    private javax.swing.JComboBox<String> cb_fakultas;
+    private javax.swing.JComboBox<String> cb_prodi;
     private javax.swing.JComboBox<String> cb_tahun;
     private javax.swing.JComboBox<String> cb_tanggal;
     private javax.swing.JLabel jLabel1;
@@ -209,12 +215,10 @@ public class KelolaBarang_Ubah extends javax.swing.JFrame implements View{
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField tf_fakultas;
     private javax.swing.JTextField tf_harga;
     private javax.swing.JTextField tf_jumlah;
     private javax.swing.JTextField tf_kondisi;
     private javax.swing.JTextField tf_nama;
-    private javax.swing.JTextField tf_prodi;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -269,13 +273,7 @@ public class KelolaBarang_Ubah extends javax.swing.JFrame implements View{
         this.cb_tanggal = cb_tanggal;
     }
 
-    public JTextField getTf_fakultas() {
-        return tf_fakultas;
-    }
-
-    public void setTf_fakultas(JTextField tf_fakultas) {
-        this.tf_fakultas = tf_fakultas;
-    }
+    
 
     public JTextField getTf_harga() {
         return tf_harga;
@@ -309,13 +307,23 @@ public class KelolaBarang_Ubah extends javax.swing.JFrame implements View{
         this.tf_nama = tf_nama;
     }
 
-    public JTextField getTf_prodi() {
-        return tf_prodi;
+    public JComboBox<String> getCb_fakultas() {
+        return cb_fakultas;
     }
 
-    public void setTf_prodi(JTextField tf_prodi) {
-        this.tf_prodi = tf_prodi;
+    public void setCb_fakultas(JComboBox<String> cb_fakultas) {
+        this.cb_fakultas = cb_fakultas;
     }
+
+    public JComboBox<String> getCb_prodi() {
+        return cb_prodi;
+    }
+
+    public void setCb_prodi(JComboBox<String> cb_prodi) {
+        this.cb_prodi = cb_prodi;
+    }
+
+    
     
     
 }

@@ -7,6 +7,7 @@ package TubesKelompok6IF3809.View;
 
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -44,10 +45,10 @@ public class KelolaRuangan_Tambah extends javax.swing.JFrame implements View {
         tf_nomor = new javax.swing.JTextField();
         tf_namagedung = new javax.swing.JTextField();
         tf_jenis = new javax.swing.JTextField();
-        tf_prodi = new javax.swing.JTextField();
-        tf_fakultas = new javax.swing.JTextField();
         btn_kembali = new javax.swing.JButton();
         btn_tambah = new javax.swing.JButton();
+        cb_prodi = new javax.swing.JComboBox<>();
+        cb_fakultas = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,6 +83,10 @@ public class KelolaRuangan_Tambah extends javax.swing.JFrame implements View {
         btn_tambah.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         btn_tambah.setText("Tambah");
 
+        cb_prodi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        cb_fakultas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -99,13 +104,13 @@ public class KelolaRuangan_Tambah extends javax.swing.JFrame implements View {
                             .addComponent(jLabel7))
                         .addGap(37, 37, 37)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tf_prodi)
-                            .addComponent(tf_jenis)
+                            .addComponent(tf_jenis, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
                             .addComponent(tf_namagedung)
                             .addComponent(tf_nomor)
                             .addComponent(tf_nama)
-                            .addComponent(tf_fakultas, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 59, Short.MAX_VALUE))
+                            .addComponent(cb_prodi, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cb_fakultas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btn_kembali)
@@ -113,7 +118,7 @@ public class KelolaRuangan_Tambah extends javax.swing.JFrame implements View {
                         .addComponent(btn_tambah)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 125, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(108, 108, 108))
         );
@@ -139,13 +144,13 @@ public class KelolaRuangan_Tambah extends javax.swing.JFrame implements View {
                     .addComponent(jLabel5)
                     .addComponent(tf_jenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addComponent(tf_prodi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cb_prodi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(tf_fakultas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cb_fakultas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_kembali)
@@ -172,6 +177,8 @@ public class KelolaRuangan_Tambah extends javax.swing.JFrame implements View {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_kembali;
     private javax.swing.JButton btn_tambah;
+    private javax.swing.JComboBox<String> cb_fakultas;
+    private javax.swing.JComboBox<String> cb_prodi;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -180,12 +187,10 @@ public class KelolaRuangan_Tambah extends javax.swing.JFrame implements View {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField tf_fakultas;
     private javax.swing.JTextField tf_jenis;
     private javax.swing.JTextField tf_nama;
     private javax.swing.JTextField tf_namagedung;
     private javax.swing.JTextField tf_nomor;
-    private javax.swing.JTextField tf_prodi;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -213,14 +218,6 @@ public class KelolaRuangan_Tambah extends javax.swing.JFrame implements View {
 
     public void setBtn_tambah(JButton btn_tambah) {
         this.btn_tambah = btn_tambah;
-    }
-
-    public JTextField getTf_fakultas() {
-        return tf_fakultas;
-    }
-
-    public void setTf_fakultas(JTextField tf_fakultas) {
-        this.tf_fakultas = tf_fakultas;
     }
 
     public JTextField getTf_jenis() {
@@ -255,13 +252,22 @@ public class KelolaRuangan_Tambah extends javax.swing.JFrame implements View {
         this.tf_nomor = tf_nomor;
     }
 
-    public JTextField getTf_prodi() {
-        return tf_prodi;
+    public JComboBox<String> getCb_fakultas() {
+        return cb_fakultas;
     }
 
-    public void setTf_prodi(JTextField tf_prodi) {
-        this.tf_prodi = tf_prodi;
+    public void setCb_fakultas(JComboBox<String> cb_fakultas) {
+        this.cb_fakultas = cb_fakultas;
     }
+
+    public JComboBox<String> getCb_prodi() {
+        return cb_prodi;
+    }
+
+    public void setCb_prodi(JComboBox<String> cb_prodi) {
+        this.cb_prodi = cb_prodi;
+    }
+
     
     
 }

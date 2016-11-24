@@ -7,6 +7,7 @@ package TubesKelompok6IF3809.View;
 
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -47,8 +48,8 @@ public class KelolaRuangan_Ubah extends javax.swing.JFrame implements View {
         tf_nomor = new javax.swing.JTextField();
         tf_namagedung = new javax.swing.JTextField();
         tf_jenis = new javax.swing.JTextField();
-        tf_prodi = new javax.swing.JTextField();
-        tf_fakultas = new javax.swing.JTextField();
+        cb_prodi = new javax.swing.JComboBox<>();
+        cb_tahun = new javax.swing.JComboBox<>();
 
         jLabel6.setText("jLabel6");
 
@@ -85,6 +86,10 @@ public class KelolaRuangan_Ubah extends javax.swing.JFrame implements View {
         btn_simpan.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         btn_simpan.setText("Simpan");
 
+        cb_prodi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        cb_tahun.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -102,12 +107,12 @@ public class KelolaRuangan_Ubah extends javax.swing.JFrame implements View {
                             .addComponent(jLabel8))
                         .addGap(62, 62, 62)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(tf_jenis, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tf_jenis, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                             .addComponent(tf_namagedung, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tf_nomor, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tf_nama, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tf_prodi)
-                            .addComponent(tf_fakultas, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))
+                            .addComponent(cb_prodi, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cb_tahun, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
@@ -144,11 +149,11 @@ public class KelolaRuangan_Ubah extends javax.swing.JFrame implements View {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(tf_prodi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cb_prodi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(tf_fakultas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cb_tahun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_kembali)
@@ -174,6 +179,8 @@ public class KelolaRuangan_Ubah extends javax.swing.JFrame implements View {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_kembali;
     private javax.swing.JButton btn_simpan;
+    private javax.swing.JComboBox<String> cb_prodi;
+    private javax.swing.JComboBox<String> cb_tahun;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -183,12 +190,10 @@ public class KelolaRuangan_Ubah extends javax.swing.JFrame implements View {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField tf_fakultas;
     private javax.swing.JTextField tf_jenis;
     private javax.swing.JTextField tf_nama;
     private javax.swing.JTextField tf_namagedung;
     private javax.swing.JTextField tf_nomor;
-    private javax.swing.JTextField tf_prodi;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -218,13 +223,7 @@ public class KelolaRuangan_Ubah extends javax.swing.JFrame implements View {
         this.btn_simpan = btn_simpan;
     }
 
-    public JTextField getTf_fakultas() {
-        return tf_fakultas;
-    }
-
-    public void setTf_fakultas(JTextField tf_fakultas) {
-        this.tf_fakultas = tf_fakultas;
-    }
+    
 
     public JTextField getTf_jenis() {
         return tf_jenis;
@@ -258,13 +257,23 @@ public class KelolaRuangan_Ubah extends javax.swing.JFrame implements View {
         this.tf_nomor = tf_nomor;
     }
 
-    public JTextField getTf_prodi() {
-        return tf_prodi;
+    public JComboBox<String> getCb_prodi() {
+        return cb_prodi;
     }
 
-    public void setTf_prodi(JTextField tf_prodi) {
-        this.tf_prodi = tf_prodi;
+    public void setCb_prodi(JComboBox<String> cb_prodi) {
+        this.cb_prodi = cb_prodi;
     }
+
+    public JComboBox<String> getCb_tahun() {
+        return cb_tahun;
+    }
+
+    public void setCb_tahun(JComboBox<String> cb_tahun) {
+        this.cb_tahun = cb_tahun;
+    }
+
+   
     
     
 }

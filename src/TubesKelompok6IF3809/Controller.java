@@ -208,9 +208,7 @@ public class Controller implements ActionListener{
             }
             else if (p.equals(tampilan.getBtn_pinjam())){
                 String namapeminjam = tampilan.getTf_namapeminjam().getText();
-                 //Date tanggalpinjam = dfFormat.parse(tampilan.getTf_tanggalpinjam().getText());
-                 //Date tanggalpengembalian = dfFormat.parse(tampilan.getTf_pengembalian().getText());
-                 //addPeminjaman(namapeminjam, tanggalpinjam, tanggalpengembalian);
+                 
                 //pindah
                 tampilan.setVisible(true);
                 tampilan.dispose();
@@ -230,9 +228,6 @@ public class Controller implements ActionListener{
                 String nama = tampilan.getTf_namaBarang().getText();
                 String kondisi = tampilan.getTf_kondisi().getText();
                 long harga = Long.parseLong(tampilan.getTf_harga().getText()) ;
-                String fakultas = tampilan.getTf_fakultas().getText();
-                String prodi = tampilan.getTf_harga().getText();
-                //dfFormat.parse(tampilan.getTf_tanggalbeli().getText());
                 //addBarang(nama, tanggalBeli, kondisi, harga, fakultas, prodi);
                 //pindah
                 tampilan.setVisible(true);
@@ -252,10 +247,6 @@ public class Controller implements ActionListener{
                 String nama = tampilan.getTf_nama().getText();
                 String kondisi = tampilan.getTf_kondisi().getText();
                 long harga = Long.parseLong(tampilan.getTf_harga().getText()) ;
-                String fakultas = tampilan.getTf_fakultas().getText();
-                String prodi = tampilan.getTf_harga().getText();
-                //dfFormat.parse(tampilan.getTf_tanggalbeli().getText());
-                //addBarang(nama, tanggalBeli, kondisi, harga, fakultas, prodi);
                 //pindah
                 tampilan.setVisible(true);
                 tampilan.dispose();
