@@ -44,13 +44,23 @@ public class Controller implements ActionListener{
         listBarang = new ArrayList<>();
         listRuangan = new ArrayList<>();
         
-        toMenuAwal();
+        toLogin();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         Object p=e.getSource();
-        if (v instanceof MenuAwal){
+        
+        if (v instanceof Login){
+            Login tampilan = (Login) v;
+            if (p.equals(tampilan.getBtn_masuk())){
+                tampilan.setVisible(true);
+                tampilan.dispose();
+                toMenuAwal();
+            }
+        }
+        
+        else if (v instanceof MenuAwal){
             MenuAwal tampilan = (MenuAwal) v;
             if (p.equals(tampilan.getBtn_kelolabarang())){
                 tampilan.setVisible(true);
@@ -67,6 +77,11 @@ public class Controller implements ActionListener{
                 tampilan.dispose();
                 toMenuCetakLaporan();
             }
+            else if (p.equals(tampilan.getBtn_keluar())){
+                tampilan.setVisible(true);
+                tampilan.dispose();
+                toLogin();
+            }
         }
         
         else if (v instanceof MenuKelolaBarang){
@@ -79,7 +94,7 @@ public class Controller implements ActionListener{
             else if(p.equals(tampilan.getBtn_ubahdata())){
                 tampilan.setVisible(true);
                 tampilan.dispose();
-                toMenuKelolaBarang_ubahdatabarang();
+                toMenuKelolaBarang_caridatabarang();
             }
             else if(p.equals(tampilan.getBtn_lihatdaftarbarang())){
                 tampilan.setVisible(true);
@@ -173,7 +188,7 @@ public class Controller implements ActionListener{
                 //pindah
                 tampilan.setVisible(true);
                 tampilan.dispose();
-                toMenuKelolaBarang();
+                toMenuKelolaBarang_ubahdatabarang();
             }
         }
         
@@ -270,7 +285,7 @@ public class Controller implements ActionListener{
                 //pindah
                 tampilan.setVisible(true);
                 tampilan.dispose();
-                toMenuKelolaRuangan();
+                toMenuKelolaRuangan_ubahdataruangan();
             }
             
         }
@@ -371,7 +386,15 @@ public class Controller implements ActionListener{
     }
 // fungsi buat nampilin view
 //===================================================================================================================    
-
+    
+     public void toLogin() {
+        Login login = new Login();
+        login.setVisible(true);
+        login.setListener(this);
+        v = login;
+    }
+    
+    
     public void toMenuAwal() {
         MenuAwal menuawal = new MenuAwal();
         menuawal.setVisible(true);

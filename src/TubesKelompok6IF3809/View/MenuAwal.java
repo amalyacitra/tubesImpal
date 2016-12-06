@@ -36,7 +36,9 @@ public class MenuAwal extends javax.swing.JFrame implements View {
         btn_kelolaruangan = new javax.swing.JButton();
         btn_cetaklaporan = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        btn_keluar = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 255));
@@ -45,8 +47,9 @@ public class MenuAwal extends javax.swing.JFrame implements View {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 204));
 
-        btn_kelolabarang.setBackground(new java.awt.Color(255, 204, 204));
-        btn_kelolabarang.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        btn_kelolabarang.setBackground(new java.awt.Color(204, 204, 255));
+        btn_kelolabarang.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btn_kelolabarang.setForeground(new java.awt.Color(0, 0, 102));
         btn_kelolabarang.setText("Kelola Barang");
         btn_kelolabarang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,57 +58,87 @@ public class MenuAwal extends javax.swing.JFrame implements View {
         });
 
         btn_kelolaruangan.setBackground(new java.awt.Color(255, 204, 204));
-        btn_kelolaruangan.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        btn_kelolaruangan.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btn_kelolaruangan.setForeground(new java.awt.Color(0, 0, 102));
         btn_kelolaruangan.setText("Kelola Ruangan");
 
-        btn_cetaklaporan.setBackground(new java.awt.Color(255, 204, 204));
-        btn_cetaklaporan.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        btn_cetaklaporan.setBackground(new java.awt.Color(204, 204, 255));
+        btn_cetaklaporan.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btn_cetaklaporan.setForeground(new java.awt.Color(0, 0, 102));
         btn_cetaklaporan.setText("Cetak Laporan");
 
-        jLabel2.setFont(new java.awt.Font("Jokerman", 0, 48)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(204, 0, 102));
-        jLabel2.setText("InvU RPL");
+        jLabel2.setFont(new java.awt.Font("Kalinga", 0, 60)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 102));
+        jLabel2.setText("Inventaris Universitas RPL");
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel3.setText("Inventaris Universitas RPL");
+        btn_keluar.setBackground(new java.awt.Color(255, 255, 204));
+        btn_keluar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btn_keluar.setForeground(new java.awt.Color(255, 102, 102));
+        btn_keluar.setText("Keluar");
+        btn_keluar.setBorderPainted(false);
+        btn_keluar.setContentAreaFilled(false);
+
+        jPanel2.setBackground(new java.awt.Color(0, 0, 102));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 15, Short.MAX_VALUE)
+        );
+
+        jPanel3.setBackground(new java.awt.Color(0, 0, 102));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 15, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btn_kelolabarang, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btn_kelolaruangan)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addGap(28, 28, 28))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btn_cetaklaporan, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                .addComponent(jLabel2)
+                .addGap(0, 21, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(btn_kelolabarang, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_kelolaruangan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_cetaklaporan, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btn_keluar))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(btn_kelolabarang)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addComponent(btn_keluar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btn_kelolaruangan)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
-                .addGap(29, 29, 29)
-                .addComponent(btn_cetaklaporan)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btn_kelolabarang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_kelolaruangan, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_cetaklaporan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -132,9 +165,11 @@ public class MenuAwal extends javax.swing.JFrame implements View {
     private javax.swing.JButton btn_cetaklaporan;
     private javax.swing.JButton btn_kelolabarang;
     private javax.swing.JButton btn_kelolaruangan;
+    private javax.swing.JButton btn_keluar;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -147,6 +182,7 @@ public class MenuAwal extends javax.swing.JFrame implements View {
         btn_kelolabarang.addActionListener(a);
         btn_kelolaruangan.addActionListener(a);
         btn_cetaklaporan.addActionListener(a);
+        btn_keluar.addActionListener(a);
     }
 
     public JButton getBtn_cetaklaporan() {
@@ -171,6 +207,10 @@ public class MenuAwal extends javax.swing.JFrame implements View {
 
     public void setBtn_kelolaruangan(JButton btn_kelolaruangan) {
         this.btn_kelolaruangan = btn_kelolaruangan;
+    }
+
+    public JButton getBtn_keluar() {
+        return btn_keluar;
     }
     
     

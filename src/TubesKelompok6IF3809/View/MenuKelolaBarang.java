@@ -44,31 +44,38 @@ public class MenuKelolaBarang extends javax.swing.JFrame implements View {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 204));
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 102));
         jLabel1.setText("Menu Kelola Barang");
 
-        btn_tambahbarang.setBackground(new java.awt.Color(255, 204, 204));
-        btn_tambahbarang.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        btn_tambahbarang.setBackground(new java.awt.Color(204, 204, 255));
+        btn_tambahbarang.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btn_tambahbarang.setForeground(new java.awt.Color(0, 0, 102));
         btn_tambahbarang.setText("Tambah Data Barang");
 
-        btn_lihatdaftarbarang.setBackground(new java.awt.Color(255, 204, 204));
-        btn_lihatdaftarbarang.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        btn_lihatdaftarbarang.setBackground(new java.awt.Color(204, 204, 255));
+        btn_lihatdaftarbarang.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btn_lihatdaftarbarang.setForeground(new java.awt.Color(0, 0, 102));
         btn_lihatdaftarbarang.setText("Lihat Daftar Barang");
 
         btn_ubahdata.setBackground(new java.awt.Color(255, 204, 204));
-        btn_ubahdata.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        btn_ubahdata.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btn_ubahdata.setForeground(new java.awt.Color(0, 0, 102));
         btn_ubahdata.setText("Ubah Data Barang");
 
-        btn_peminjamanbarang.setBackground(new java.awt.Color(255, 204, 204));
-        btn_peminjamanbarang.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        btn_peminjamanbarang.setBackground(new java.awt.Color(204, 204, 255));
+        btn_peminjamanbarang.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btn_peminjamanbarang.setForeground(new java.awt.Color(0, 0, 102));
         btn_peminjamanbarang.setText("Pinjam Barang");
 
-        btn_kembali.setBackground(new java.awt.Color(255, 204, 204));
-        btn_kembali.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        btn_kembali.setBackground(new java.awt.Color(255, 102, 102));
+        btn_kembali.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btn_kembali.setForeground(new java.awt.Color(255, 255, 255));
         btn_kembali.setText("Kembali");
 
         btn_lihatdaftarpeminjaman.setBackground(new java.awt.Color(255, 204, 204));
-        btn_lihatdaftarpeminjaman.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        btn_lihatdaftarpeminjaman.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btn_lihatdaftarpeminjaman.setForeground(new java.awt.Color(0, 0, 102));
         btn_lihatdaftarpeminjaman.setText("Lihat Daftar Peminjaman");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -77,38 +84,39 @@ public class MenuKelolaBarang extends javax.swing.JFrame implements View {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btn_lihatdaftarbarang, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_lihatdaftarpeminjaman, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btn_kembali)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 135, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btn_lihatdaftarpeminjaman, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn_peminjamanbarang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn_ubahdata, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn_lihatdaftarbarang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(btn_tambahbarang, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(119, 119, 119))))
+                        .addComponent(btn_tambahbarang, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_ubahdata, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_peminjamanbarang, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_kembali, javax.swing.GroupLayout.Alignment.LEADING))
+                .addContainerGap(19, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(187, 187, 187))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(20, 20, 20)
                 .addComponent(jLabel1)
-                .addGap(26, 26, 26)
-                .addComponent(btn_tambahbarang)
-                .addGap(18, 18, 18)
-                .addComponent(btn_lihatdaftarbarang)
-                .addGap(18, 18, 18)
-                .addComponent(btn_ubahdata)
-                .addGap(18, 18, 18)
-                .addComponent(btn_peminjamanbarang)
-                .addGap(18, 18, 18)
-                .addComponent(btn_lihatdaftarpeminjaman)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addGap(72, 72, 72)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_tambahbarang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_ubahdata, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_peminjamanbarang, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_lihatdaftarbarang, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_lihatdaftarpeminjaman, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(80, 80, 80)
                 .addComponent(btn_kembali)
                 .addContainerGap())
         );
