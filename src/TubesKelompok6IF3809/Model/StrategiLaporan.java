@@ -10,5 +10,5 @@ package TubesKelompok6IF3809.Model;
  * @author A_CITRA
  */
 public interface StrategiLaporan {
-    public void durasiRekap(int durasi);
+    public int durasiRekap(int durasi);
 }

@@ -15,8 +15,8 @@ public class LaporanMutasiPerubahan implements StrategiLaporan {
     
 
     @Override
-    public void durasiRekap(int durasi) {
-    
+    public int durasiRekap(int durasi) {
+       return durasi;
     }
     
     public void hitungBarangDipinjam (){
