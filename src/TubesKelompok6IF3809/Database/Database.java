@@ -41,11 +41,14 @@ public class Database {
             String url = "jdbc:mysql://localhost:3306";
             String hostname = "root";
             String password = "y";
-            //Class.forName("com.mysql.jdbc.Drivers");
+            Class.forName("com.mysql.jdbc.Drivers");
             c = DriverManager.getConnection(url, hostname, password);
         } catch (SQLException exception) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, exception);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }
 //Database Barang
 

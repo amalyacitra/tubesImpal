@@ -7,11 +7,15 @@ package TubesKelompok6IF3809;
 
 import TubesKelompok6IF3809.Model.*;
 import TubesKelompok6IF3809.View.*;
+import TubesKelompok6IF3809.Database.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComboBox;
 
 
@@ -24,7 +28,8 @@ public class Controller implements ActionListener{
     private ArrayList<Admin> listAdmin;
     private ArrayList <Barang> listBarang;
     private ArrayList <Ruangan> listRuangan;
-    private ArrayList <Peminjaman> listPeminjaman;
+    private ArrayList <Peminjaman> listPeminjamanBarang;
+    private ArrayList <Peminjaman> listPeminjamanRuangan;
     private ArrayList <LaporanKeuangan> listLapKeuangan;
     private ArrayList <LaporanMutasiPerubahan> listLapMutasiPerubahan;
     private ArrayList <LaporanKondisiBarang> listLapKondisiBarang;
@@ -247,7 +252,11 @@ public class Controller implements ActionListener{
                  
             }
             else if (p.equals(tampilan.getBtn_pinjam())){
-                String namapeminjam = tampilan.getTf_namapeminjam().getText();
+                try {
+                    pinjamBarang_KelolaBarang(tampilan);
+                } catch (ParseException ex) {
+                    Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+                }
                  
                 //pindah
                 tampilan.setVisible(true);
@@ -259,15 +268,17 @@ public class Controller implements ActionListener{
         
         else if(v instanceof KelolaBarang_Tambah){
             KelolaBarang_Tambah tampilan = (KelolaBarang_Tambah) v;
-            JComboBox comboBoxFakultas = new JComboBox(ArrFakultas);
-            tampilan.setCb_fakultas(comboBoxFakultas);
             if(p.equals(tampilan.getBtn_kembali())){
                 tampilan.setVisible(true);
                 tampilan.dispose();
                 toMenuKelolaBarang();
             }
             else if (p.equals(tampilan.getBtn_tambah())){
-                
+                try {
+                    tambahBarang_KelolaBarang(tampilan);
+                } catch (ParseException ex) {
+                    Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 tampilan.setVisible(true);
                 tampilan.dispose();
                 toMenuKelolaBarang();
@@ -353,7 +364,11 @@ public class Controller implements ActionListener{
                 
             }
             else if (p.equals(tampilan.getBtn_pinjam())){
-                
+                try {
+                    pinjamRuangan_KelolaRuangan(tampilan);
+                } catch (ParseException ex) {
+                    Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 //pindah
                 tampilan.setVisible(true);
                 tampilan.dispose();
@@ -369,6 +384,7 @@ public class Controller implements ActionListener{
                 toMenuKelolaRuangan();
             }
             else if (p.equals(tampilan.getBtn_tambah())){
+                tambahRuangan_KelolaRuangan(tampilan);
                 tampilan.setVisible(true);
                 tampilan.dispose();
                 toMenuKelolaRuangan();
@@ -565,10 +581,100 @@ public class Controller implements ActionListener{
     }
     
     
-   private void tambahBarang_KelolaBarang (KelolaBarang_Tambah tampilan){
+   private void tambahBarang_KelolaBarang (KelolaBarang_Tambah tampilan) throws ParseException{
+       Barang barang = new Barang();
+       String tanggal,bulan,tahun;
+       String tanggalbeli;
+       
+       tanggal = tampilan.getCb_tanggal().getSelectedItem().toString();
+       bulan = tampilan.getCb_bulan().getSelectedItem().toString();
+       tahun = tampilan.getCb_tahun().getSelectedItem().toString();
+       tanggalbeli = tanggal+bulan+tahun;
+       Date date = dfFormat.parse(tanggalbeli);
+       
+       
+       barang.setNamaBarang(tampilan.getTf_namaBarang().getText());
+       barang.setKondisiBarang(tampilan.getTf_kondisi().getText());
+       barang.setHarga(Long.parseLong(tampilan.getTf_harga().getText()));
+       barang.setFakultas(tampilan.getCb_fakultas().getSelectedItem().toString());
+       barang.setProdi(tampilan.getCb_prodi().getSelectedItem().toString());
+       barang.setTanggalBeli(date);
+       
+       listBarang.add(barang);
+   }
+   
+   private void tambahRuangan_KelolaRuangan (KelolaRuangan_Tambah tampilan){
+       Ruangan ruangan = new Ruangan();
+       ruangan.setNamaRuangan(tampilan.getTf_nama().getText());
+       ruangan.setNomorRuangan(tampilan.getTf_nomor().getText());
+       ruangan.setNamaGedung(tampilan.getTf_namagedung().getText());
+       ruangan.setJenisRuangan(tampilan.getTf_jenis().getText());
+       ruangan.setProdi(tampilan.getCb_prodi().getSelectedItem().toString());
+       ruangan.setFakultas(tampilan.getCb_fakultas().getSelectedItem().toString());
+       
+       listRuangan.add(ruangan);
+   }
+   
+   private void pinjamBarang_KelolaBarang (KelolaBarang_Pinjam tampilan) throws ParseException {
+       Peminjaman peminjamanbarang = new Peminjaman();
+       String cari;
+       cari=tampilan.getTf_cari().getText();
+       peminjamanbarang.setNamaPeminjam(tampilan.getTf_namapeminjam().getText());
+      
+       
+       String tanggal,bulan,tahun;
+       String tanggall,bulann,tahunn;
+       String tanggalpinjam;
+       String tanggalkembali;
+       
+       tanggal = tampilan.getCb_tanggalpinjam().getSelectedItem().toString();
+       bulan = tampilan.getCb_bulanpinjam().getSelectedItem().toString();
+       tahun = tampilan.getCb_tahunpinjam().getSelectedItem().toString();
+       tanggalpinjam = tanggal+bulan+tahun;
+       Date tanggalpinjem = dfFormat.parse(tanggalpinjam);
+       
+       tanggall = tampilan.getCb_tanggalpengembalian().getSelectedItem().toString();
+       bulann = tampilan.getCb_bulanpengembalian().getSelectedItem().toString();
+       tahunn = tampilan.getCb_tahunpengembalian().getSelectedItem().toString();
+       tanggalkembali = tanggall+bulann+tahunn;
+       Date tanggalkembaliin = dfFormat.parse(tanggalkembali);
+       
+       peminjamanbarang.setTanggalPinjam(tanggalpinjem);
+       peminjamanbarang.setTanggalPengembalian(tanggalkembaliin);
+       
+       listPeminjamanBarang.add(peminjamanbarang);
        
    }
-    
+   
+   private void pinjamRuangan_KelolaRuangan (KelolaRuangan_Pinjam tampilan) throws ParseException {
+       Peminjaman peminjamanruangan = new Peminjaman();
+       String cari;
+       cari=tampilan.getTf_cari().getText();
+       peminjamanruangan.setNamaPeminjam(tampilan.getTf_cari().getText());
+      
+       
+       String tanggal,bulan,tahun;
+       String tanggall,bulann,tahunn;
+       String tanggalpinjam;
+       String tanggalkembali;
+       
+       tanggal = tampilan.getCb_tanggalpinjam().getSelectedItem().toString();
+       bulan = tampilan.getCb_bulanpinjam().getSelectedItem().toString();
+       tahun = tampilan.getCb_tahunpinjam().getSelectedItem().toString();
+       tanggalpinjam = tanggal+bulan+tahun;
+       Date tanggalpinjem = dfFormat.parse(tanggalpinjam);
+       
+       tanggall = tampilan.getCb_tanggalpengembalian().getSelectedItem().toString();
+       bulann = tampilan.getCb_bulanpengembalian().getSelectedItem().toString();
+       tahunn = tampilan.getCb_tahunpengembalian().getSelectedItem().toString();
+       tanggalkembali = tanggall+bulann+tahunn;
+       Date tanggalkembaliin = dfFormat.parse(tanggalkembali);
+       
+       peminjamanruangan.setTanggalPinjam(tanggalpinjem);
+       peminjamanruangan.setTanggalPengembalian(tanggalkembaliin);
+       listPeminjamanRuangan.add(peminjamanruangan);
+       
+   }
     
    
 }

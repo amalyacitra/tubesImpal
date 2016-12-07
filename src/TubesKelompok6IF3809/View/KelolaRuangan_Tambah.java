@@ -6,6 +6,7 @@
 package TubesKelompok6IF3809.View;
 
 import java.awt.event.ActionListener;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -20,8 +21,18 @@ public class KelolaRuangan_Tambah extends javax.swing.JFrame implements View {
     /**
      * Creates new form KelolaRuangan_Tambah
      */
+    String[] ArrFakultas = {"FIF","FRI"};
+    String[] ArrProdi = {"Teknik Informatika","Sistem Informasi"};
+    String[] ArrTanggal = {"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19",
+                                    "20","21","22","23","24","25","26","27","28","29","30","31"
+                                    };
+    String[] ArrBulan = {"1","2","3","4","5","6","7","8","9","10","11","12"};
+    String[] ArrTahun = {"2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020"};
+    
     public KelolaRuangan_Tambah() {
         initComponents();
+        cb_prodi.setModel(new DefaultComboBoxModel<String>(ArrProdi));
+        cb_fakultas.setModel(new DefaultComboBoxModel<String>(ArrFakultas));
     }
 
     /**

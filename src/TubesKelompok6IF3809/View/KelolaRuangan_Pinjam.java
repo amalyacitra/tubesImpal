@@ -6,6 +6,7 @@
 package TubesKelompok6IF3809.View;
 
 import java.awt.event.ActionListener;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JList;
@@ -21,8 +22,23 @@ public class KelolaRuangan_Pinjam extends javax.swing.JFrame implements View {
     /**
      * Creates new form KelolaRuangan_Pinjam
      */
+    
+    String[] ArrFakultas = {"FIF","FRI"};
+    String[] ArrProdi = {"Teknik Informatika","Sistem Informasi"};
+    String[] ArrTanggal = {"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19",
+                                    "20","21","22","23","24","25","26","27","28","29","30","31"
+                                    };
+    String[] ArrBulan = {"1","2","3","4","5","6","7","8","9","10","11","12"};
+    String[] ArrTahun = {"2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020"};
+    
     public KelolaRuangan_Pinjam() {
         initComponents();
+        cb_tanggalpinjam.setModel(new DefaultComboBoxModel<String>(ArrTanggal));
+        cb_bulanpinjam.setModel(new DefaultComboBoxModel<String>(ArrBulan));
+        cb_tahunpinjam.setModel(new DefaultComboBoxModel<String>(ArrTahun));
+        cb_tanggalpengembalian.setModel(new DefaultComboBoxModel<String>(ArrTanggal));
+        cb_bulanpengembalian.setModel(new DefaultComboBoxModel<String>(ArrBulan));
+        cb_tahunpengembalian.setModel(new DefaultComboBoxModel<String>(ArrTahun));
     }
 
     /**
@@ -171,10 +187,11 @@ public class KelolaRuangan_Pinjam extends javax.swing.JFrame implements View {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(btn_cari)
-                    .addComponent(tf_cari, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tf_cari, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(btn_cari)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
