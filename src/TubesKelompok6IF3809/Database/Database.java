@@ -65,7 +65,7 @@ public class Database {
 
     public Barang getBarang(String namaBarang) throws SQLException {
         Barang brg = null;
-        String query = "select *FROM barang where namaBarang= '" + namaBarang + "'";
+        String query = "select * FROM barang where namaBarang= '" + namaBarang + "'";
         rs = stmt.executeQuery(query);
         while (rs.next()) {
             brg = new Barang(rs.getString(1), rs.getDate(2), rs.getString(3), rs.getLong(4), rs.getString(5), rs.getString(6));
@@ -160,4 +160,49 @@ public class Database {
     }
 
     // Database Peminjaman
+    public void savePinjam(Peminjaman pin) throws SQLException {
+        String query = "INSERT INTO Ruangan(namaPeminjam, tanggalPinjam, tanggalPengembalian) VALUES ('" + pin.getNamaPeminjam()+ "','" + pin.getTanggalPinjam() + "','" + pin.getTanggalPengembalian() + "')";
+        stmt.execute(query, Statement.RETURN_GENERATED_KEYS);
+        rs = stmt.getGeneratedKeys();
+    }
+
+    public Ruangan getPinjamRuangan(String namaRuangan) throws SQLException {
+        Ruangan ruang = null;
+        String query = "select *FROM PEMINJAMAN where namaRuangan= '" + namaRuangan + "'";
+        rs = stmt.executeQuery(query);
+        while (rs.next()) {
+            ruang = new Ruangan(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
+        }
+        return ruang;
+    }
+    public Barang getPinjamBarang(String namaBarang) throws SQLException {
+        Barang brg = null;
+        String query = "select * FROM PEMINJAMAN where namaBarang= '" + namaBarang + "'";
+        rs = stmt.executeQuery(query);
+        while (rs.next()) {
+            brg = new Barang(rs.getString(1), rs.getDate(2), rs.getString(3), rs.getLong(4), rs.getString(5), rs.getString(6));
+        }
+        return brg;
+    }
+
+    public String[] getListPinjamNamaRuangan() throws SQLException {
+        ArrayList<String> listNama = new ArrayList<>();
+        String query = "SELECT namaRuangan FROM PEMINJAMAN";
+        rs = stmt.executeQuery(query);
+        while (rs.next()) {
+            listNama.add(rs.getString(1));
+
+        }
+        return listNama.toArray(new String[0]);
+    }
+     public String[] getListPinjamNamaBarang() throws SQLException {
+        ArrayList<String> listNama = new ArrayList<>();
+        String query = "SELECT namaBarang FROM PEMINJAMAN";
+        rs = stmt.executeQuery(query);
+        while (rs.next()) {
+            listNama.add(rs.getString(1));
+
+        }
+        return listNama.toArray(new String[0]);
+    }
 }
