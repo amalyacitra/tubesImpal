@@ -20,8 +20,14 @@ public class KelolaBarang_Tambah extends javax.swing.JFrame implements View {
     /**
      * Creates new form KelolaBarang_Tambah
      */
+   
+    
+    
+    
     public KelolaBarang_Tambah() {
         initComponents();
+        
+       
     }
 
     /**
@@ -106,6 +112,11 @@ public class KelolaBarang_Tambah extends javax.swing.JFrame implements View {
         cb_prodi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         cb_fakultas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb_fakultas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_fakultasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -207,6 +218,11 @@ public class KelolaBarang_Tambah extends javax.swing.JFrame implements View {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cb_fakultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_fakultasActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_cb_fakultasActionPerformed
 
     
 

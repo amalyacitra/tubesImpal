@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.JComboBox;
 
 
 /**
@@ -20,6 +21,7 @@ import java.util.Date;
  */
 public class Controller implements ActionListener{
     //variabel
+    private ArrayList<Admin> listAdmin;
     private ArrayList <Barang> listBarang;
     private ArrayList <Ruangan> listRuangan;
     private ArrayList <Peminjaman> listPeminjaman;
@@ -27,10 +29,21 @@ public class Controller implements ActionListener{
     private ArrayList <LaporanMutasiPerubahan> listLapMutasiPerubahan;
     private ArrayList <LaporanKondisiBarang> listLapKondisiBarang;
     private View v;
-    
+    private Database database;
+    private Admin admin;
     SimpleDateFormat dfFormat = new SimpleDateFormat("dd.MM.yyyy");
     
-    Admin admin = new Admin("Citra", "1301140389");
+    String[] ArrFakultas = {"FIF","FRI"};
+    String[] ArrProdi = {"Teknik Informatika","Sistem Informasi"};
+    String[] ArrTanggal = {"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19",
+                                    "20","21","22","23","24","25","26","27","28","29","30","31"
+                                    };
+    String[] ArrBulan = {"1","2","3","4","5","6","7","8","9","10","11","12"};
+    String[] ArrTahun = {"2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020"};
+    
+    //JComboBox comboBoxFakultas = new JComboBox(ArrFakultas);
+    //JComboBox<String> comboBoxFakultas = new JComboBox<String>(ArrFakultas);
+    
     
     //buat akses view
 //===================================================================================================================
@@ -43,7 +56,10 @@ public class Controller implements ActionListener{
         listLapKondisiBarang = new ArrayList<>();
         listBarang = new ArrayList<>();
         listRuangan = new ArrayList<>();
+        listAdmin = new ArrayList<>();
+        listAdmin.add(new Admin("kel6","if3809"));
         
+        database = new Database();
         toLogin();
     }
 
@@ -54,9 +70,17 @@ public class Controller implements ActionListener{
         if (v instanceof Login){
             Login tampilan = (Login) v;
             if (p.equals(tampilan.getBtn_masuk())){
-                tampilan.setVisible(true);
-                tampilan.dispose();
-                toMenuAwal();
+                validasiLogin(tampilan);
+                if (admin!=null){
+                    tampilan.setVisible(false);
+                    tampilan.dispose();
+                    toMenuAwal();
+                    
+                }
+                else {
+                    tampilan.showMessage("Nama/Kata sandi salah, coba ulang kembali");
+                }
+                
             }
         }
         
@@ -78,6 +102,7 @@ public class Controller implements ActionListener{
                 toMenuCetakLaporan();
             }
             else if (p.equals(tampilan.getBtn_keluar())){
+                admin = null;
                 tampilan.setVisible(true);
                 tampilan.dispose();
                 toLogin();
@@ -234,17 +259,15 @@ public class Controller implements ActionListener{
         
         else if(v instanceof KelolaBarang_Tambah){
             KelolaBarang_Tambah tampilan = (KelolaBarang_Tambah) v;
+            JComboBox comboBoxFakultas = new JComboBox(ArrFakultas);
+            tampilan.setCb_fakultas(comboBoxFakultas);
             if(p.equals(tampilan.getBtn_kembali())){
                 tampilan.setVisible(true);
                 tampilan.dispose();
                 toMenuKelolaBarang();
             }
             else if (p.equals(tampilan.getBtn_tambah())){
-                String nama = tampilan.getTf_namaBarang().getText();
-                String kondisi = tampilan.getTf_kondisi().getText();
-                long harga = Long.parseLong(tampilan.getTf_harga().getText()) ;
-                //addBarang(nama, tanggalBeli, kondisi, harga, fakultas, prodi);
-                //pindah
+                
                 tampilan.setVisible(true);
                 tampilan.dispose();
                 toMenuKelolaBarang();
@@ -259,10 +282,7 @@ public class Controller implements ActionListener{
                 toMenuKelolaBarang();
             }
             else if (p.equals(tampilan.getBtn_simpan())){
-                String nama = tampilan.getTf_nama().getText();
-                String kondisi = tampilan.getTf_kondisi().getText();
-                long harga = Long.parseLong(tampilan.getTf_harga().getText()) ;
-                //pindah
+                
                 tampilan.setVisible(true);
                 tampilan.dispose();
                 toMenuKelolaBarang();
@@ -272,7 +292,7 @@ public class Controller implements ActionListener{
         else if(v instanceof KelolaRuangan_Cari){
             KelolaRuangan_Cari tampilan = (KelolaRuangan_Cari) v;
             if (p.equals(tampilan.getBtn_kembali())){
-                String cari = tampilan.getTf_cari().getText();
+                
                 tampilan.setVisible(true);
                 tampilan.dispose();
                 toMenuKelolaRuangan();
@@ -527,12 +547,28 @@ public class Controller implements ActionListener{
    //buat control model
 //===================================================================================================================
     
-    public void addBarang (String namaBarang, Date tanggalBeli, String kondisiBarang, long harga, String fakultas, String prodi){
-        listBarang.add(new Barang (namaBarang,tanggalBeli, kondisiBarang, harga, fakultas, prodi));
+    private void validasiLogin (Login tampilan){
+        String nama,katasandi;
+        nama = tampilan.getTf_nama().getText();
+        katasandi = tampilan.getTf_katasandi().getText();
+        
+        if (nama.isEmpty()|| katasandi.isEmpty()){
+            admin = null;
+        }
+        else{
+            for (Admin a: listAdmin){
+                if (a.getNama().equals(nama)&&a.getNip().equals(katasandi)){
+                    admin = a;
+                }
+            }
+        }
     }
     
-    public void addPeminjaman(String namapeminjam, Date tanggalpinjam, Date pengembalian){
-        listPeminjaman.add(new Peminjaman(namapeminjam, tanggalpinjam, pengembalian));
-    }
+    
+   private void tambahBarang_KelolaBarang (KelolaBarang_Tambah tampilan){
+       
+   }
+    
+    
    
 }
