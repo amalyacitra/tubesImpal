@@ -10,6 +10,7 @@ import TubesKelompok6IF3809.View.*;
 import TubesKelompok6IF3809.Database.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -252,11 +253,9 @@ public class Controller implements ActionListener{
                  
             }
             else if (p.equals(tampilan.getBtn_pinjam())){
-                try {
-                    pinjamBarang_KelolaBarang(tampilan);
-                } catch (ParseException ex) {
-                    Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                
+                pinjamBarang_KelolaBarang(tampilan);
+                
                  
                 //pindah
                 tampilan.setVisible(true);
@@ -274,11 +273,9 @@ public class Controller implements ActionListener{
                 toMenuKelolaBarang();
             }
             else if (p.equals(tampilan.getBtn_tambah())){
-                try {
-                    tambahBarang_KelolaBarang(tampilan);
-                } catch (ParseException ex) {
-                    Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                
+                tambahBarang_KelolaBarang(tampilan);
+                //database.saveBarang(listBarang.get(0));
                 tampilan.setVisible(true);
                 tampilan.dispose();
                 toMenuKelolaBarang();
@@ -364,11 +361,9 @@ public class Controller implements ActionListener{
                 
             }
             else if (p.equals(tampilan.getBtn_pinjam())){
-                try {
+                
                     pinjamRuangan_KelolaRuangan(tampilan);
-                } catch (ParseException ex) {
-                    Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                
                 //pindah
                 tampilan.setVisible(true);
                 tampilan.dispose();
@@ -385,6 +380,7 @@ public class Controller implements ActionListener{
             }
             else if (p.equals(tampilan.getBtn_tambah())){
                 tambahRuangan_KelolaRuangan(tampilan);
+                //database.saveRuangan(listRuangan.get(0));
                 tampilan.setVisible(true);
                 tampilan.dispose();
                 toMenuKelolaRuangan();
@@ -581,7 +577,7 @@ public class Controller implements ActionListener{
     }
     
     
-   private void tambahBarang_KelolaBarang (KelolaBarang_Tambah tampilan) throws ParseException{
+   private void tambahBarang_KelolaBarang (KelolaBarang_Tambah tampilan) {
        Barang barang = new Barang();
        String tanggal,bulan,tahun;
        String tanggalbeli;
@@ -590,15 +586,15 @@ public class Controller implements ActionListener{
        bulan = tampilan.getCb_bulan().getSelectedItem().toString();
        tahun = tampilan.getCb_tahun().getSelectedItem().toString();
        tanggalbeli = tanggal+bulan+tahun;
-       Date date = dfFormat.parse(tanggalbeli);
+       //Date date = dfFormat.parse(tanggalbeli);
        
        
        barang.setNamaBarang(tampilan.getTf_namaBarang().getText());
        barang.setKondisiBarang(tampilan.getTf_kondisi().getText());
-       barang.setHarga(Long.parseLong(tampilan.getTf_harga().getText()));
+       //barang.setHarga(Long.parseLong(tampilan.getTf_harga().getText()));
        barang.setFakultas(tampilan.getCb_fakultas().getSelectedItem().toString());
        barang.setProdi(tampilan.getCb_prodi().getSelectedItem().toString());
-       barang.setTanggalBeli(date);
+       //barang.setTanggalBeli(date);
        
        listBarang.add(barang);
    }
@@ -615,7 +611,7 @@ public class Controller implements ActionListener{
        listRuangan.add(ruangan);
    }
    
-   private void pinjamBarang_KelolaBarang (KelolaBarang_Pinjam tampilan) throws ParseException {
+   private void pinjamBarang_KelolaBarang (KelolaBarang_Pinjam tampilan)  {
        Peminjaman peminjamanbarang = new Peminjaman();
        String cari;
        cari=tampilan.getTf_cari().getText();
@@ -631,22 +627,22 @@ public class Controller implements ActionListener{
        bulan = tampilan.getCb_bulanpinjam().getSelectedItem().toString();
        tahun = tampilan.getCb_tahunpinjam().getSelectedItem().toString();
        tanggalpinjam = tanggal+bulan+tahun;
-       Date tanggalpinjem = dfFormat.parse(tanggalpinjam);
+       //Date tanggalpinjem = dfFormat.parse(tanggalpinjam);
        
        tanggall = tampilan.getCb_tanggalpengembalian().getSelectedItem().toString();
        bulann = tampilan.getCb_bulanpengembalian().getSelectedItem().toString();
        tahunn = tampilan.getCb_tahunpengembalian().getSelectedItem().toString();
        tanggalkembali = tanggall+bulann+tahunn;
-       Date tanggalkembaliin = dfFormat.parse(tanggalkembali);
+       //Date tanggalkembaliin = dfFormat.parse(tanggalkembali);
        
-       peminjamanbarang.setTanggalPinjam(tanggalpinjem);
-       peminjamanbarang.setTanggalPengembalian(tanggalkembaliin);
+       //peminjamanbarang.setTanggalPinjam(tanggalpinjem);
+       //peminjamanbarang.setTanggalPengembalian(tanggalkembaliin);
        
        listPeminjamanBarang.add(peminjamanbarang);
        
    }
    
-   private void pinjamRuangan_KelolaRuangan (KelolaRuangan_Pinjam tampilan) throws ParseException {
+   private void pinjamRuangan_KelolaRuangan (KelolaRuangan_Pinjam tampilan)  {
        Peminjaman peminjamanruangan = new Peminjaman();
        String cari;
        cari=tampilan.getTf_cari().getText();
@@ -662,16 +658,16 @@ public class Controller implements ActionListener{
        bulan = tampilan.getCb_bulanpinjam().getSelectedItem().toString();
        tahun = tampilan.getCb_tahunpinjam().getSelectedItem().toString();
        tanggalpinjam = tanggal+bulan+tahun;
-       Date tanggalpinjem = dfFormat.parse(tanggalpinjam);
+       //Date tanggalpinjem = dfFormat.parse(tanggalpinjam);
        
        tanggall = tampilan.getCb_tanggalpengembalian().getSelectedItem().toString();
        bulann = tampilan.getCb_bulanpengembalian().getSelectedItem().toString();
        tahunn = tampilan.getCb_tahunpengembalian().getSelectedItem().toString();
        tanggalkembali = tanggall+bulann+tahunn;
-       Date tanggalkembaliin = dfFormat.parse(tanggalkembali);
+       //Date tanggalkembaliin = dfFormat.parse(tanggalkembali);
        
-       peminjamanruangan.setTanggalPinjam(tanggalpinjem);
-       peminjamanruangan.setTanggalPengembalian(tanggalkembaliin);
+       //peminjamanruangan.setTanggalPinjam(tanggalpinjem);
+       //peminjamanruangan.setTanggalPengembalian(tanggalkembaliin);
        listPeminjamanRuangan.add(peminjamanruangan);
        
    }
