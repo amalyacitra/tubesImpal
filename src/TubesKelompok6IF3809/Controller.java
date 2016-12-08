@@ -675,6 +675,5 @@ public class Controller implements ActionListener{
        listPeminjamanRuangan.add(peminjamanruangan);
        
    }
-    
    
 }
