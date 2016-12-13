@@ -38,168 +38,174 @@ public class Database {
 
     public void buatKoneksi() {
         try {
-            String url = "jdbc:mysql://localhost:3306";
+            String url = "jdbc:mysql://localhost:3306/databaseimpal";
             String hostname = "root";
             String password = "y";
-            //Class.forName("com.mysql.jdbc.Drivers");
-            c = DriverManager.getConnection(url, hostname, password);
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+                c = DriverManager.getConnection(url, hostname, password);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } catch (SQLException exception) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, exception);
         }
     }
 //Database Barang
 
-    public void saveBarang(Barang brg) throws SQLException {
-        String query = "INSERT INTO barang(namaBarang, tanggalBeli, kondisiBarang, harga, fakultas, prodi) VALUES ('" + brg.getNamaBarang() + "','" + brg.getTanggalBeli() + "','" + brg.getKondisiBarang() + "','" + brg.getHarga() + "','" + brg.getFakultas() + "','" + brg.getProdi() + "')";
-        stmt.execute(query, Statement.RETURN_GENERATED_KEYS);
-        rs = stmt.getGeneratedKeys();
-    }
-
-    public void editBarang(Barang brg) throws SQLException {
-        String query = "UPDATE BARANG set namaBarang='" + brg.getNamaBarang() + "', tanggalBeli='" + brg.getTanggalBeli() + "', kondisiBarang='" + brg.getKondisiBarang() + "', harga='" + brg.getHarga() + "', fakultas='" + brg.getFakultas() + "', prodi='" + brg.getProdi() + "'";
-        stmt.execute(query);
-    }
-
-    public Barang getBarang(String namaBarang) throws SQLException {
-        Barang brg = null;
-        String query = "select * FROM barang where namaBarang= '" + namaBarang + "'";
-        rs = stmt.executeQuery(query);
-        while (rs.next()) {
-            brg = new Barang(rs.getString(1), rs.getDate(2), rs.getString(3), rs.getLong(4), rs.getString(5), rs.getString(6));
-        }
-        return brg;
-    }
-
-    public String[] getListNamaBarang() throws SQLException {
-        ArrayList<String> listNama = new ArrayList<>();
-        String query = "SELECT namaBarang FROM barang";
-        rs = stmt.executeQuery(query);
-        while (rs.next()) {
-            listNama.add(rs.getString(1));
-
-        }
-        return listNama.toArray(new String[0]);
-    }
-
-    public void delBarang(String namaBarang) throws SQLException {
-        String query = "DELETE FROM Barang where namaBarang= '" + namaBarang + "'";
-        stmt.execute(query);
-
-    }
-
-    public ArrayList<Barang> selectAllListBarang() throws SQLException {
-        ArrayList<Barang> listBarang = new ArrayList<>();
+    public void saveBarang(Barang brg) {
         try {
+            buatKoneksi();
+            stmt = c.createStatement();
+            String query = "INSERT INTO barang(idBarang, namaBarang, tanggalBeli, kondisiBarang, harga, fakultas, prodi, lokasiRuangan) "
+                    +"VALUES ("+ brg.getIdBarang()+ ",'" + brg.getNamaBarang() + "'," + "'"+brg.getTanggalBeli()+"'" + ",'" + brg.getKondisiBarang() + "','" + brg.getHarga() + "','" + brg.getFakultas() + "','" + brg.getProdi()  + "','" + brg.getLokasiRuangan()+ "')";
+            stmt.execute(query, Statement.RETURN_GENERATED_KEYS);
+            rs = stmt.getGeneratedKeys();
+            c.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
 
-            String query = "select * from Barang";
-            rs = stmt.executeQuery(query);
-            while (rs.next()) {
-                listBarang.add(new Barang(rs.getString("namaBarang"), rs.getDate("tanggalBeli"), rs.getString("kondisiBarang"), rs.getLong("harga"), rs.getString("fakultas"), rs.getString("prodi")));
+    public void editBarang(Barang brg, Barang cari) {
+        try {
+            buatKoneksi();
+            stmt = c.createStatement();
+            
+            String query = "UPDATE BARANG set namaBarang='" + brg.getNamaBarang() + "', tanggalBeli='" + brg.getTanggalBeli() + "', kondisiBarang='" + brg.getKondisiBarang() + "', harga='" + brg.getHarga() 
+                    + "', fakultas='" + brg.getFakultas() + "', prodi='" + brg.getProdi()+ "', lokasiRuangan='" + brg.getLokasiRuangan()+ "'" 
+                    + "WHERE namaBarang = " + "'" + cari.getNamaBarang() + "'";
+            stmt.execute(query, Statement.RETURN_GENERATED_KEYS);
+            rs = stmt.getGeneratedKeys();
+            c.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+
+
+    public ArrayList<Barang> getListBarang()  {
+        try {
+            ArrayList<Barang> listBarang  = new ArrayList<>();
+            buatKoneksi();
+            String q = "select * from barang";
+            stmt = c.createStatement();
+            rs = stmt.executeQuery(q);
+            while(rs.next()){
+                Barang b = new Barang(rs.getString(2), rs.getString(3), 
+                        rs.getString(4), rs.getLong(5), rs.getString(6), rs.getString(7));
+                b.setIdBarang(Integer.parseInt(rs.getString(1)));
+                b.setStatus(rs.getString("status"));
+                b.setLokasiRuangan(rs.getString("lokasiRuangan"));
+                listBarang.add(b);
             }
-        } catch (SQLException exception) {
+            c.close();
+            return listBarang;
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
             return null;
         }
-        return listBarang;
     }
+
 //Database Ruangan
 
-    public void saveRuangan(Ruangan ruang) throws SQLException {
-        String query = "INSERT INTO Ruangan(namaRuangan, nomorRuangan, namaGedung, jenisRuangan, fakultas, prodi) VALUES ('" + ruang.getNamaRuangan() + "','" + ruang.getNomorRuangan() + "','" + ruang.getNamaGedung() + "','" + ruang.getJenisRuangan() + "','" + ruang.getFakultas() + "','" + ruang.getProdi() + "')";
-        stmt.execute(query, Statement.RETURN_GENERATED_KEYS);
-        rs = stmt.getGeneratedKeys();
-    }
-
-    public void editRuangan(Ruangan ruang) throws SQLException {
-        String query = "UPDATE RUANGAN set namaRuangan='" + ruang.getNamaRuangan() + "', nomorRuangan='" + ruang.getNomorRuangan() + "', namaGedung='" + ruang.getNamaGedung() + "', jenisRuangan='" + ruang.getJenisRuangan() + "', fakultas='" + ruang.getFakultas() + "', prodi='" + ruang.getProdi() + "'";
-        stmt.execute(query);
-    }
-
-    public Ruangan getRuangan(String namaRuangan) throws SQLException {
-        Ruangan ruang = null;
-        String query = "select *FROM RUANGAN where namaRuangan= '" + namaRuangan + "'";
-        rs = stmt.executeQuery(query);
-        while (rs.next()) {
-            ruang = new Ruangan(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
-        }
-        return ruang;
-    }
-
-    public String[] getListNamaRuangan() throws SQLException {
-        ArrayList<String> listNama = new ArrayList<>();
-        String query = "SELECT namaRuangan FROM RUANGAN";
-        rs = stmt.executeQuery(query);
-        while (rs.next()) {
-            listNama.add(rs.getString(1));
-
-        }
-        return listNama.toArray(new String[0]);
-    }
-
-    public void delRuangan(String namaRuangan) throws SQLException {
-        String query = "DELETE FROM RUANGAN where namaRuangan= '" + namaRuangan + "'";
-        stmt.execute(query);
-
-    }
-
-    public ArrayList<Ruangan> selectAllListRuangan() throws SQLException {
-        ArrayList<Ruangan> listRuangan = new ArrayList<>();
+    public void saveRuangan(Ruangan ruang)  {
         try {
+            buatKoneksi();
+            stmt = c.createStatement();
+            String query = "INSERT INTO ruangan(idRuangan, nomorRuangan, namaGedung, jenisRuangan, fakultas, prodi) "
+                    +"VALUES ("+ ruang.getIdRuangan()+ "," + "'"+ruang.getNomorRuangan()+"'" + ",'" + ruang.getNamaGedung()+ "','" + ruang.getJenisRuangan() + "','" + ruang.getFakultas() + "','" + ruang.getProdi() + "')";
+            stmt.execute(query, Statement.RETURN_GENERATED_KEYS);
+            rs = stmt.getGeneratedKeys();
+            c.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
-            String query = "select * FROM RUANGAN";
-            rs = stmt.executeQuery(query);
-            while (rs.next()) {
-                listRuangan.add(new Ruangan(rs.getString("namaRuangan"), rs.getString("nomorRuangan"), rs.getString("namaGedung"), rs.getString("jenisRuangan"), rs.getString("fakultas"), rs.getString("prodi")));
+    public void editRuangan(Ruangan ruang, Ruangan cari) {
+        try {
+            buatKoneksi();
+            stmt = c.createStatement();
+            
+            String query = "UPDATE RUANGAN set nomorRuangan='" + ruang.getNomorRuangan() + "', namaGedung='" + ruang.getNamaGedung() + "', jenisRuangan='" + ruang.getJenisRuangan() 
+                    + "', fakultas='" + ruang.getFakultas() + "', prodi='" + ruang.getProdi() + "'"  
+                    + "WHERE nomorRuangan = " + "'" + cari.getNomorRuangan()+ "'";
+            stmt.execute(query, Statement.RETURN_GENERATED_KEYS);
+            rs = stmt.getGeneratedKeys();
+            c.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+
+    public ArrayList<Ruangan> getListRuangan()  {
+        try {
+            ArrayList<Ruangan> listRuangan  = new ArrayList<>();
+            buatKoneksi();
+            String q = "select * from ruangan";
+            stmt = c.createStatement();
+            rs = stmt.executeQuery(q);
+            while(rs.next()){
+                Ruangan r = new Ruangan(rs.getString(2), rs.getString(3), 
+                        rs.getString(4), rs.getString(5), rs.getString(6));
+                r.setIdRuangan(Integer.parseInt(rs.getString(1)));
+                r.setStatus(rs.getString("status"));
+                listRuangan.add(r);
             }
-        } catch (SQLException exception) {
+            c.close();
+            return listRuangan;
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
             return null;
         }
-        return listRuangan;
     }
 
     // Database Peminjaman
-    public void savePinjam(Peminjaman pin) throws SQLException {
-        String query = "INSERT INTO Ruangan(namaPeminjam, tanggalPinjam, tanggalPengembalian) VALUES ('" + pin.getNamaPeminjam()+ "','" + pin.getTanggalPinjam() + "','" + pin.getTanggalPengembalian() + "')";
-        stmt.execute(query, Statement.RETURN_GENERATED_KEYS);
-        rs = stmt.getGeneratedKeys();
+    public void savePinjam(Peminjaman pinjam, Barang cari) {
+        try {
+            buatKoneksi();
+            stmt = c.createStatement();
+            String query = "INSERT INTO peminjaman(idPeminjaman, tanggalPinjam, tanggalPengembalian, namaPeminjam, idBarang, nomorRuangan) "
+                    +"VALUES ("+ pinjam.getIdPeminjaman()+ ",'" + pinjam.getTanggalPinjam()+ "'," + "'"+pinjam.getTanggalPengembalian()+"'" + ",'" + pinjam.getNamaPeminjam() + "','" + pinjam.getIdBarang() + "','" + pinjam.getNomorRuangan() + "')";
+            String queryy = "UPDATE BARANG set status='dipinjam'" + "WHERE namaBarang = " + "'" + cari.getNamaBarang() + "'";
+            stmt.execute(query, Statement.RETURN_GENERATED_KEYS);
+            stmt.execute(queryy, Statement.RETURN_GENERATED_KEYS);
+            rs = stmt.getGeneratedKeys();
+            c.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+    }
+    
+    public ArrayList<Peminjaman> getListPeminjaman()  {
+        try {
+            ArrayList<Peminjaman> listPeminjaman  = new ArrayList<>();
+            buatKoneksi();
+            String q = "select * from peminjaman";
+            stmt = c.createStatement();
+            rs = stmt.executeQuery(q);
+            while(rs.next()){
+                Peminjaman p = new Peminjaman(rs.getString(2), rs.getString(3), 
+                        rs.getString(4), rs.getInt(5), rs.getString(6));
+                p.setIdPeminjaman(Integer.parseInt(rs.getString(1)));
+                listPeminjaman.add(p);
+            }
+            c.close();
+            return listPeminjaman;
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
     }
 
-    public Ruangan getPinjamRuangan(String namaRuangan) throws SQLException {
-        Ruangan ruang = null;
-        String query = "select *FROM PEMINJAMAN where namaRuangan= '" + namaRuangan + "'";
-        rs = stmt.executeQuery(query);
-        while (rs.next()) {
-            ruang = new Ruangan(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
-        }
-        return ruang;
-    }
-    public Barang getPinjamBarang(String namaBarang) throws SQLException {
-        Barang brg = null;
-        String query = "select * FROM PEMINJAMAN where namaBarang= '" + namaBarang + "'";
-        rs = stmt.executeQuery(query);
-        while (rs.next()) {
-            brg = new Barang(rs.getString(1), rs.getDate(2), rs.getString(3), rs.getLong(4), rs.getString(5), rs.getString(6));
-        }
-        return brg;
-    }
+    
 
-    public String[] getListPinjamNamaRuangan() throws SQLException {
-        ArrayList<String> listNama = new ArrayList<>();
-        String query = "SELECT namaRuangan FROM PEMINJAMAN";
-        rs = stmt.executeQuery(query);
-        while (rs.next()) {
-            listNama.add(rs.getString(1));
-
-        }
-        return listNama.toArray(new String[0]);
-    }
-     public String[] getListPinjamNamaBarang() throws SQLException {
-        ArrayList<String> listNama = new ArrayList<>();
-        String query = "SELECT namaBarang FROM PEMINJAMAN";
-        rs = stmt.executeQuery(query);
-        while (rs.next()) {
-            listNama.add(rs.getString(1));
-
-        }
-        return listNama.toArray(new String[0]);
-    }
 }

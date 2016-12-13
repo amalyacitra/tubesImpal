@@ -5,7 +5,7 @@
  */
 package TubesKelompok6IF3809.Model;
 import java.util.ArrayList;
-import java.util.Date;
+
 
 
 /**
@@ -15,7 +15,7 @@ import java.util.Date;
 public class Barang {
     private int idBarang=0;
     private String namaBarang;
-    private Date tanggalBeli;
+    private String tanggalBeli;
     private String kondisiBarang;
     private long harga;
     private String fakultas;
@@ -27,7 +27,7 @@ public class Barang {
     
     }
 
-    public Barang(String namaBarang, Date tanggalBeli, String kondisiBarang, long harga, String fakultas, String prodi) {
+    public Barang(String namaBarang, String tanggalBeli, String kondisiBarang, long harga, String fakultas, String prodi) {
         this.idBarang = idBarang +1;
         this.namaBarang = namaBarang;
         this.tanggalBeli = tanggalBeli;
@@ -54,11 +54,11 @@ public class Barang {
     }
 
 
-    public Date getTanggalBeli() {
+    public String getTanggalBeli() {
         return tanggalBeli;
     }
 
-    public void setTanggalBeli(Date tanggalBeli) {
+    public void setTanggalBeli(String tanggalBeli) {
         this.tanggalBeli = tanggalBeli;
     }
 

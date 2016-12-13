@@ -36,10 +36,7 @@ public class KelolaBarang_Cari extends javax.swing.JFrame implements View {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        tf_cari = new javax.swing.JTextField();
         btn_kembali = new javax.swing.JButton();
-        btn_cari = new javax.swing.JButton();
         btn_ubah = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         listbarang = new javax.swing.JList<>();
@@ -50,21 +47,12 @@ public class KelolaBarang_Cari extends javax.swing.JFrame implements View {
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel1.setText("Cari Data Barang");
-
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel2.setText("Cari berdasarkan nama");
+        jLabel1.setText("Pilih Data Barang");
 
         btn_kembali.setBackground(new java.awt.Color(255, 102, 102));
         btn_kembali.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         btn_kembali.setForeground(new java.awt.Color(255, 255, 255));
         btn_kembali.setText("Kembali");
-
-        btn_cari.setBackground(new java.awt.Color(255, 102, 102));
-        btn_cari.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        btn_cari.setForeground(new java.awt.Color(255, 255, 255));
-        btn_cari.setText("Cari");
 
         btn_ubah.setBackground(new java.awt.Color(255, 102, 102));
         btn_ubah.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
@@ -98,12 +86,6 @@ public class KelolaBarang_Cari extends javax.swing.JFrame implements View {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(tf_cari)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn_cari))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(btn_ubah, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(293, 293, 293)))
@@ -114,13 +96,8 @@ public class KelolaBarang_Cari extends javax.swing.JFrame implements View {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(50, 50, 50)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(tf_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_cari))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btn_ubah, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
@@ -145,15 +122,12 @@ public class KelolaBarang_Cari extends javax.swing.JFrame implements View {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_cari;
     private javax.swing.JButton btn_kembali;
     private javax.swing.JButton btn_ubah;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JList<String> listbarang;
-    private javax.swing.JTextField tf_cari;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -163,17 +137,9 @@ public class KelolaBarang_Cari extends javax.swing.JFrame implements View {
 
     @Override
     public void setListener(ActionListener a) {
-        btn_cari.addActionListener(a);
+        
         btn_kembali.addActionListener(a);
         btn_ubah.addActionListener(a);
-    }
-
-    public JButton getBtn_cari() {
-        return btn_cari;
-    }
-
-    public void setBtn_cari(JButton btn_cari) {
-        this.btn_cari = btn_cari;
     }
 
     public JButton getBtn_kembali() {
@@ -200,13 +166,6 @@ public class KelolaBarang_Cari extends javax.swing.JFrame implements View {
         this.listbarang = listbarang;
     }
 
-    public JTextField getTf_cari() {
-        return tf_cari;
-    }
-
-    public void setTf_cari(JTextField tf_cari) {
-        this.tf_cari = tf_cari;
-    }
 
    
     

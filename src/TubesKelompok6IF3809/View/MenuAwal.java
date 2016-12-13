@@ -48,7 +48,7 @@ public class MenuAwal extends javax.swing.JFrame implements View {
         jPanel1.setBackground(new java.awt.Color(255, 255, 204));
 
         btn_kelolabarang.setBackground(new java.awt.Color(204, 204, 255));
-        btn_kelolabarang.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btn_kelolabarang.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         btn_kelolabarang.setForeground(new java.awt.Color(0, 0, 102));
         btn_kelolabarang.setText("Kelola Barang");
         btn_kelolabarang.addActionListener(new java.awt.event.ActionListener() {
@@ -58,16 +58,16 @@ public class MenuAwal extends javax.swing.JFrame implements View {
         });
 
         btn_kelolaruangan.setBackground(new java.awt.Color(255, 204, 204));
-        btn_kelolaruangan.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btn_kelolaruangan.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         btn_kelolaruangan.setForeground(new java.awt.Color(0, 0, 102));
         btn_kelolaruangan.setText("Kelola Ruangan");
 
         btn_cetaklaporan.setBackground(new java.awt.Color(204, 204, 255));
-        btn_cetaklaporan.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btn_cetaklaporan.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         btn_cetaklaporan.setForeground(new java.awt.Color(0, 0, 102));
         btn_cetaklaporan.setText("Cetak Laporan");
 
-        jLabel2.setFont(new java.awt.Font("Kalinga", 0, 60)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Kalinga", 1, 60)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 102));
         jLabel2.setText("Inventaris Universitas RPL");
 
@@ -113,7 +113,7 @@ public class MenuAwal extends javax.swing.JFrame implements View {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addGap(0, 21, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(btn_kelolabarang, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)

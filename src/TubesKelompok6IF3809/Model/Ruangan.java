@@ -12,22 +12,23 @@ import java.util.ArrayList;
  * @author A_CITRA
  */
 public class Ruangan {
-    private String namaRuangan;
+
     private String nomorRuangan;
     private String namaGedung;
     private String jenisRuangan;
     private String fakultas;
     private String prodi;
     private String status = "tidak dipinjam";
+    private int idRuangan = 0;
     
-    private ArrayList<Barang> listbarang;
+   
     
     public Ruangan(){
     
     }
 
-    public Ruangan(String namaRuangan, String nomorRuangan, String namaGedung, String jenisRuangan, String fakultas, String prodi) {
-        this.namaRuangan = namaRuangan;
+    public Ruangan(String nomorRuangan, String namaGedung, String jenisRuangan, String fakultas, String prodi) {
+        this.idRuangan = idRuangan +1;
         this.nomorRuangan = nomorRuangan;
         this.namaGedung = namaGedung;
         this.jenisRuangan = jenisRuangan;
@@ -35,13 +36,7 @@ public class Ruangan {
         this.prodi = prodi;
     }
 
-    public String getNamaRuangan() {
-        return namaRuangan;
-    }
-
-    public void setNamaRuangan(String namaRuangan) {
-        this.namaRuangan = namaRuangan;
-    }
+    
 
     public String getNomorRuangan() {
         return nomorRuangan;
@@ -83,14 +78,6 @@ public class Ruangan {
         this.prodi = prodi;
     }
 
-    public ArrayList<Barang> getListbarang() {
-        return listbarang;
-    }
-
-    public void setListbarang(ArrayList<Barang> listbarang) {
-        this.listbarang = listbarang;
-    }
-
     public String getStatus() {
         return status;
     }
@@ -98,6 +85,15 @@ public class Ruangan {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public int getIdRuangan() {
+        return idRuangan;
+    }
+
+    public void setIdRuangan(int idRuangan) {
+        this.idRuangan = idRuangan;
+    }
+    
     
     
 }

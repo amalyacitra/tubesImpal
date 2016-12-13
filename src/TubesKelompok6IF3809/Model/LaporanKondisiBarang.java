@@ -13,13 +13,19 @@ import java.util.ArrayList;
  */
 public class LaporanKondisiBarang implements StrategiLaporan {
 
+    public int jumlah;
+    public String tanggal;
+    
     @Override
     public int durasiRekap(int durasi) {
         return durasi;
     }
     
-    public void cekKondisiBarang(){
-    
+    public void cekKondisiBarang(int jumlah){
+        this.jumlah = jumlah;
     }
-
+    
+    public void setTanggal (String tanggal){
+       this.tanggal = tanggal;
+    }
 }

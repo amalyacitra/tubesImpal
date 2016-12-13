@@ -13,19 +13,20 @@ import java.util.ArrayList;
  */
 public class LaporanMutasiPerubahan implements StrategiLaporan {
     
-
+    public int jumlah;
+    public String tanggal;
+    
     @Override
     public int durasiRekap(int durasi) {
        return durasi;
     }
     
-    public void hitungBarangDipinjam (){
-    
+    public void hitungBarangDipinjam (int jumlah){
+       this.jumlah = jumlah;
     }
-    
-    public void hitungrRuanganDipinjam (){
-    
+   
+    public void setTanggal (String tanggal){
+       this.tanggal = tanggal;
     }
-    
     
 }

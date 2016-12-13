@@ -12,15 +12,20 @@ import java.util.ArrayList;
  * @author KELOMPOK 6 IF-38-09
  */
 public class LaporanKeuangan implements StrategiLaporan {
+    public long jumlah;
+    public String tanggal;
     
     @Override
     public int durasiRekap(int durasi) {
        return durasi;
     }
     
-    public void hitungPendapatan(){
-        
+    public void hitungPendapatan(long jumlah){
+        this.jumlah=jumlah;
     }
-
+    
+    public void setTanggal (String tanggal){
+       this.tanggal = tanggal;
+    }
     
 }

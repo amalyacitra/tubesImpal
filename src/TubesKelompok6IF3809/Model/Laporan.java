@@ -15,16 +15,16 @@ public class Laporan{
     private Date tanggal;
     private String idLaporan;
     private StrategiLaporan jenislaporan;
-    private Admin admin;
+   
     
     public Laporan(){
     
     }
 
-    public Laporan(Date tanggal, String idLaporan, String admin) {
+    public Laporan(Date tanggal, String idLaporan) {
         this.tanggal = tanggal;
         this.idLaporan = idLaporan;
-        this.admin.setNama(admin);
+        
     }
 
     public Date getTanggal() {

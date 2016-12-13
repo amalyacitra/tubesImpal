@@ -6,6 +6,7 @@
 package TubesKelompok6IF3809.View;
 
 import java.awt.event.ActionListener;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -20,8 +21,24 @@ public class KelolaBarang_Ubah extends javax.swing.JFrame implements View{
     /**
      * Creates new form KelolaBarang_Ubah
      */
+    
+    String[] ArrFakultas = {"FIF","FRI"};
+    String[] ArrProdi = {"Teknik Informatika","Sistem Informasi"};
+    String[] ArrTanggal = {"01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19",
+                                    "20","21","22","23","24","25","26","27","28","29","30","31"
+                                    };
+    String[] ArrBulan = {"01","02","03","04","05","06","07","08","09","10","11","12"};
+    String[] ArrTahun = {"2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020"};
+    String[] Kondisi = {"Baik","Buruk"};
+    
     public KelolaBarang_Ubah() {
         initComponents();
+        cb_prodi.setModel(new DefaultComboBoxModel<String>(ArrProdi));
+       cb_fakultas.setModel(new DefaultComboBoxModel<String>(ArrFakultas) {});
+       cb_tanggal.setModel(new DefaultComboBoxModel<String>(ArrTanggal) {});
+       cb_bulan.setModel(new DefaultComboBoxModel<String>(ArrBulan) {});
+       cb_tahun.setModel(new DefaultComboBoxModel<String>(ArrTahun) {});
+       cb_kondisi.setModel(new DefaultComboBoxModel<String>(Kondisi) {});
     }
 
     /**
@@ -45,12 +62,14 @@ public class KelolaBarang_Ubah extends javax.swing.JFrame implements View{
         cb_tanggal = new javax.swing.JComboBox<>();
         cb_bulan = new javax.swing.JComboBox<>();
         cb_tahun = new javax.swing.JComboBox<>();
-        tf_kondisi = new javax.swing.JTextField();
         tf_harga = new javax.swing.JTextField();
         btn_kembali = new javax.swing.JButton();
         btn_simpan = new javax.swing.JButton();
         cb_prodi = new javax.swing.JComboBox<>();
         cb_fakultas = new javax.swing.JComboBox<>();
+        cb_kondisi = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        cb_lokasiruangan = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -107,53 +126,64 @@ public class KelolaBarang_Ubah extends javax.swing.JFrame implements View{
 
         cb_fakultas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        cb_kondisi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 102));
+        jLabel3.setText("Lokasi Ruangan");
+
+        cb_lokasiruangan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(181, 181, 181)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel3))
+                                .addGap(36, 36, 36)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cb_fakultas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cb_lokasiruangan, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel4)
-                                    .addComponent(jLabel7))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(tf_harga, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tf_kondisi, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel6))
+                                .addGap(30, 30, 30)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tf_harga)
+                                    .addComponent(cb_prodi, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cb_kondisi, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(cb_tanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(cb_bulan, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(cb_tahun, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(cb_prodi, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(97, 97, 97)
-                                .addComponent(tf_nama, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel8)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(140, 140, 140)
-                                .addComponent(cb_fakultas, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(cb_tahun, 0, 117, Short.MAX_VALUE))
+                                    .addComponent(tf_nama)))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btn_kembali)))
-                .addContainerGap(161, Short.MAX_VALUE))
+                        .addComponent(btn_kembali)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(134, 134, 134))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btn_simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(299, 299, 299))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(170, 170, 170))))
+                        .addGap(170, 170, 170))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btn_simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(294, 294, 294))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,25 +200,29 @@ public class KelolaBarang_Ubah extends javax.swing.JFrame implements View{
                     .addComponent(cb_bulan, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cb_tahun, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addGap(18, 18, 18)
+                .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tf_kondisi, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_kondisi, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(tf_harga, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(cb_prodi, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cb_fakultas, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(cb_fakultas, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45)
+                    .addComponent(jLabel3)
+                    .addComponent(cb_lokasiruangan, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addComponent(btn_simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(46, 46, 46)
                 .addComponent(btn_kembali)
                 .addContainerGap())
         );
@@ -214,11 +248,14 @@ public class KelolaBarang_Ubah extends javax.swing.JFrame implements View{
     private javax.swing.JButton btn_simpan;
     private javax.swing.JComboBox<String> cb_bulan;
     private javax.swing.JComboBox<String> cb_fakultas;
+    private javax.swing.JComboBox<String> cb_kondisi;
+    private javax.swing.JComboBox<String> cb_lokasiruangan;
     private javax.swing.JComboBox<String> cb_prodi;
     private javax.swing.JComboBox<String> cb_tahun;
     private javax.swing.JComboBox<String> cb_tanggal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -226,7 +263,6 @@ public class KelolaBarang_Ubah extends javax.swing.JFrame implements View{
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField tf_harga;
-    private javax.swing.JTextField tf_kondisi;
     private javax.swing.JTextField tf_nama;
     // End of variables declaration//GEN-END:variables
 
@@ -292,13 +328,15 @@ public class KelolaBarang_Ubah extends javax.swing.JFrame implements View{
         this.tf_harga = tf_harga;
     }
 
-    public JTextField getTf_kondisi() {
-        return tf_kondisi;
+    public JComboBox<String> getCb_kondisi() {
+        return cb_kondisi;
     }
 
-    public void setTf_kondisi(JTextField tf_kondisi) {
-        this.tf_kondisi = tf_kondisi;
+    public void setCb_kondisi(JComboBox<String> cb_kondisi) {
+        this.cb_kondisi = cb_kondisi;
     }
+
+   
 
     public JTextField getTf_nama() {
         return tf_nama;
@@ -322,6 +360,14 @@ public class KelolaBarang_Ubah extends javax.swing.JFrame implements View{
 
     public void setCb_prodi(JComboBox<String> cb_prodi) {
         this.cb_prodi = cb_prodi;
+    }
+
+    public JComboBox<String> getCb_lokasiruangan() {
+        return cb_lokasiruangan;
+    }
+
+    public void setCb_lokasiruangan(JComboBox<String> cb_lokasiruangan) {
+        this.cb_lokasiruangan = cb_lokasiruangan;
     }
 
     
