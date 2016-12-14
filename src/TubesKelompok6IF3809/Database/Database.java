@@ -126,14 +126,14 @@ public class Database {
         }
     }
 
-    public void editRuangan(Ruangan ruang, Ruangan cari) {
+    public void editRuangan(Ruangan ruang, String cari) {
         try {
             buatKoneksi();
             stmt = c.createStatement();
             
-            String query = "UPDATE RUANGAN set nomorRuangan='" + ruang.getNomorRuangan() + "', namaGedung='" + ruang.getNamaGedung() + "', jenisRuangan='" + ruang.getJenisRuangan() 
+            String query = "UPDATE RUANGAN set nomorRuangan ='" + ruang.getNomorRuangan() + "', namaGedung='" + ruang.getNamaGedung() + "', jenisRuangan='" + ruang.getJenisRuangan() 
                     + "', fakultas='" + ruang.getFakultas() + "', prodi='" + ruang.getProdi() + "'"  
-                    + "WHERE nomorRuangan = " + "'" + cari.getNomorRuangan()+ "'";
+                    + " WHERE nomorRuangan = " + "'" + cari+ "'";
             stmt.execute(query, Statement.RETURN_GENERATED_KEYS);
             rs = stmt.getGeneratedKeys();
             c.close();
@@ -167,21 +167,35 @@ public class Database {
     }
 
     // Database Peminjaman
-    public void savePinjam(Peminjaman pinjam, Barang cari) {
+    public void savePinjam(Peminjaman pinjam) {
         try {
             buatKoneksi();
             stmt = c.createStatement();
             String query = "INSERT INTO peminjaman(idPeminjaman, tanggalPinjam, tanggalPengembalian, namaPeminjam, idBarang, nomorRuangan) "
                     +"VALUES ("+ pinjam.getIdPeminjaman()+ ",'" + pinjam.getTanggalPinjam()+ "'," + "'"+pinjam.getTanggalPengembalian()+"'" + ",'" + pinjam.getNamaPeminjam() + "','" + pinjam.getIdBarang() + "','" + pinjam.getNomorRuangan() + "')";
-            String queryy = "UPDATE BARANG set status='dipinjam'" + "WHERE namaBarang = " + "'" + cari.getNamaBarang() + "'";
+           
             stmt.execute(query, Statement.RETURN_GENERATED_KEYS);
-            stmt.execute(queryy, Statement.RETURN_GENERATED_KEYS);
+            
             rs = stmt.getGeneratedKeys();
             c.close();
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
        
+    }
+    
+    public void ubahStatusBarang (String cari){
+        try {
+            buatKoneksi();
+            stmt = c.createStatement();
+                String query = "UPDATE BARANG set status = 'dipinjam' WHERE namaBarang = '" + cari + "'";
+            stmt.execute(query, Statement.RETURN_GENERATED_KEYS);
+            
+            rs = stmt.getGeneratedKeys();
+            c.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public ArrayList<Peminjaman> getListPeminjaman()  {

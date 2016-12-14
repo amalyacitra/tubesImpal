@@ -41,7 +41,7 @@ public class Controller implements ActionListener{
     private Barang barangDicari;
     private Barang barangDipinjam;
     private Ruangan ruanganDicari;
-    
+    private FileIO file;
     
     //buat akses view
 //===================================================================================================================
@@ -61,6 +61,7 @@ public class Controller implements ActionListener{
         barangDicari = new Barang();
         barangDipinjam = new Barang();
         database = new Database();
+        file = new FileIO();
         toLogin();
     }
 
@@ -184,16 +185,19 @@ public class Controller implements ActionListener{
                     LapMutasiPerubahan = addLaporanMutasi(tampilan);
                     tampilan.showMessage(String.valueOf(LapMutasiPerubahan.tanggal));
                     tampilan.showMessage(String.valueOf(LapMutasiPerubahan.jumlah));
+                    //saveLaporanMutasi();
                 }
                 else if (pilih.equals("Keuangan")){
                     LapKeuangan = addLaporanKeuangan(tampilan);
                     tampilan.showMessage(String.valueOf(LapKeuangan.tanggal));
                     tampilan.showMessage(String.valueOf(LapKeuangan.jumlah));
+                    //saveLaporanKeuangan();
                 }
                 else if (pilih.equals("Kondisi Barang")){
                     LapKondisiBarang = addLaporanKondisi(tampilan);
                     tampilan.showMessage(String.valueOf(LapKondisiBarang.tanggal));
                     tampilan.showMessage(String.valueOf(LapKondisiBarang.jumlah));
+                    //saveLaporanKondisi();
                 }
                 
                 
@@ -248,6 +252,7 @@ public class Controller implements ActionListener{
             
             if(p.equals(tampilan.getBtn_pilih())){
                 barangDipinjam = cariBarangPinjam_KelolaBarang(tampilan);
+                System.out.println(barangDipinjam.getNamaBarang());
                 tampilan.setVisible(true);
                 tampilan.dispose();
                 toMenuKelolaBarang_peminjamanbarang();
@@ -256,9 +261,8 @@ public class Controller implements ActionListener{
             else if (p.equals(tampilan.getBtn_pinjam())){
                 
                 pinjamBarang_KelolaBarang(tampilan);
-                barangDipinjam.setStatus("dipinjam");
-                database.savePinjam(listPeminjamanBarang.get(listPeminjamanBarang.size()-1),barangDipinjam);
-                
+                database.savePinjam(listPeminjamanBarang.get(listPeminjamanBarang.size()-1));
+                database.ubahStatusBarang(barangDipinjam.getNamaBarang());
                 //pindah
                 tampilan.setVisible(true);
                 tampilan.dispose();
@@ -314,6 +318,7 @@ public class Controller implements ActionListener{
             
             else if (p.equals(tampilan.getBtn_ubah())){
                 ruanganDicari = cariRuangan_KelolaRuangan(tampilan);
+                
                 //pindah
                 tampilan.setVisible(true);
                 tampilan.dispose();
@@ -358,7 +363,8 @@ public class Controller implements ActionListener{
             else if (p.equals(tampilan.getBtn_simpan())){
                 Ruangan ruangan;
                 ruangan = ubahDataRuangan_KelolaRuangan(tampilan);
-                database.editRuangan(ruangan,ruanganDicari);
+                System.out.println(ruangan.getNomorRuangan());
+                database.editRuangan(ruangan,ruanganDicari.getNomorRuangan());
                 tampilan.setVisible(true);
                 tampilan.dispose();
                 toMenuKelolaRuangan();
@@ -627,9 +633,11 @@ public class Controller implements ActionListener{
    
    private Barang cariBarangPinjam_KelolaBarang (KelolaBarang_Pinjam tampilan){
        Barang ketemu = new Barang();
+       
        String cari = tampilan.getList_barang().getSelectedValuesList().toString();
+       int panjang = cari.length()-1;
        for (Barang b : listBarang){
-           if (b.getNamaBarang().equals(cari)){
+           if (b.getNamaBarang().equals(cari.substring(1, panjang))){
                ketemu = b;
            }
        }
@@ -704,20 +712,25 @@ public class Controller implements ActionListener{
    
    private Ruangan cariRuangan_KelolaRuangan (KelolaRuangan_Cari tampilan){
        Ruangan ketemu = new Ruangan();
-       String cari = tampilan.getList_ruangan().getSelectedValuesList().toString();
+       
+       String cari;
+       cari =  tampilan.getList_ruangan().getSelectedValuesList().toString();
+        int panjang = cari.length()-1;
+       
        for (Ruangan r : listRuangan){
-           if (r.getNomorRuangan().equals(cari)){
+           if (r.getNomorRuangan().equals(cari.substring(1, panjang))){
                ketemu = r;
            }
        }
+       
        return ketemu;
    }
    
    private Ruangan ubahDataRuangan_KelolaRuangan (KelolaRuangan_Ubah tampilan){
        Ruangan ruangan = ruanganDicari;
-       ruangan.setNomorRuangan(tampilan.getTf_nomor().toString());
-       ruangan.setNamaGedung(tampilan.getTf_namagedung().toString());
-       ruangan.setJenisRuangan(tampilan.getTf_jenis().toString());
+       ruangan.setNomorRuangan(tampilan.getTf_nomor().getText());
+       ruangan.setNamaGedung(tampilan.getTf_namagedung().getText());
+       ruangan.setJenisRuangan(tampilan.getTf_jenis().getText());
        ruangan.setFakultas(tampilan.getCb_fakultas().getSelectedItem().toString());
        ruangan.setProdi(tampilan.getCb_prodi().getSelectedItem().toString());
        return ruangan;
@@ -787,4 +800,15 @@ public class Controller implements ActionListener{
        return lap;
    }
    
+    public void saveLaporanMutasi(){
+       file.saveObject(LapMutasiPerubahan, "LaporanMutasi.dat");
+    }
+    
+    public void saveLaporanKeuangan(){
+       file.saveObject(LapKeuangan, "LaporanKeuangan.dat");
+    }
+    
+    public void saveLaporanKondisi(){
+       file.saveObject(LapKondisiBarang, "LaporanKondisi.dat");
+    }
 }
